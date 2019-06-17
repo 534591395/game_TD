@@ -1,6 +1,6 @@
 {
-  "engineVersion": "5.2.20",
-  "compilerVersion": "5.2.20",
+  "engineVersion": "5.2.21",
+  "compilerVersion": "5.2.21",
   "template": {},
   "target": {
     "current": "web"
@@ -26,6 +26,14 @@
     },
     {
       "name": "promise"
+    },
+    {
+      "name": "tiled",
+      "path": "./utils/Tiled"
+    },
+    {
+      "name": "pathFinding",
+      "path": "./utils/PathFinding"
     }
   ]
 }
