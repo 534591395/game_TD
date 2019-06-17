@@ -13,8 +13,25 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 var EnemyFactory = (function (_super) {
     __extends(EnemyFactory, _super);
+    // 士兵奔跑频率
     function EnemyFactory() {
-        return _super.call(this) || this;
+        var _this = _super.call(this) || this;
+        // 士兵默认坐标
+        _this.soldierStartX = 0;
+        _this.soldierStartY = 315;
+        // 开始标志
+        _this.started = false;
+        // 当前轮次
+        _this.round = 0;
+        // 轮次计算
+        _this.roundCount = 0;
+        // 总轮次
+        _this.roundTotal = 20;
+        // 下一轮次间隔时间(5秒)
+        _this.roundTime = 5;
+        // 倒计时
+        _this.countDown = _this.roundTime + 1;
+        return _this;
     }
     return EnemyFactory;
 }(egret.DisplayObjectContainer));
