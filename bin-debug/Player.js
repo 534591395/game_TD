@@ -32,10 +32,10 @@ var Player = (function (_super) {
         _this.score = 0;
         // 武器
         _this.weapons = [];
-        // 轮次
-        _this.round = 0;
         // 敌人
         _this.targets = [];
+        // 当前玩家进行的游戏轮次
+        _this.round = 1;
         _this.reset();
         return _this;
     }

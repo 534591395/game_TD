@@ -20,12 +20,14 @@ class Player extends egret.DisplayObjectContainer {
    private score:number = 0;
    // 武器
    private weapons = [];
-   // 轮次
-   private round:number = 0;
+
    // 敌人
    private targets = [];
    // 路径集合（敌人可走）
    private path:any;
+
+   // 当前玩家进行的游戏轮次
+   public round: number = 1;
 
    public constructor() {
         super();
@@ -121,7 +123,7 @@ class Player extends egret.DisplayObjectContainer {
        } else {
            let tile = this.getTile(target);
            if (target.direction[0] != 0) {
-               
+
            }
        }
    }
@@ -150,7 +152,7 @@ class Player extends egret.DisplayObjectContainer {
    }
 
    // 添加敌人
-   public addTarget(target) {
+   public addTarget(target:Soldier) {
        if (!target) {
            return;
        }
