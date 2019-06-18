@@ -23,7 +23,8 @@ class Soldier extends egret.DisplayObjectContainer{
     public ty: number = 3;
     // 方位（上下左右）
     public direction: [number, number] = [1,0];
-    
+    // avatar 角色 它可以代表角色的位置、方向、运动状态和姿势
+    public avatar: egret.MovieClip;
 
     
     // 当前士兵的最大生命值
