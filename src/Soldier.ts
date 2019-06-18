@@ -17,4 +17,9 @@ class Soldier extends egret.DisplayObjectContainer{
     public constructor() {
         super();
     }
+    
+    // 每两轮升级一次士兵等级，对应士兵属性也升级，查看 EnemyFactory类（currentLevel）
+    public static setLevel(target:Soldier, level:number) {
+        
+    }
 }
