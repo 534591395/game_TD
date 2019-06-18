@@ -9,10 +9,29 @@ class Soldier extends egret.DisplayObjectContainer{
     public static levels = [{maxHealth:100, score:10, money:3, speed:5}];
 
     // 该士兵的进攻路线
-    public path = null;
-    
+    public path = null;    
     // 当前该士兵对象的等级，默认0级。
     public level: number = 0;
+    // 士兵移动速度
+    public speed: number = 0;
+    // 打死该士兵玩家得到的分数
+    public score: number = 0;
+    // 士兵价值（金币值）
+    public money: number = 0;
+    // 士兵所在地图坐标（格子坐标）
+    public tx: number = -1;
+    public ty: number = 3;
+    // 方位（上下左右）
+    public direction: [number, number] = [1,0];
+    
+
+    
+    // 当前士兵的最大生命值
+    private maxHealth:number = 0;
+    // 当前士兵的生命值
+    private health:number = 0;
+    // 
+    
 
     public constructor() {
         super();
