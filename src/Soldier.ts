@@ -5,7 +5,7 @@
 class Soldier extends egret.DisplayObjectContainer{
     // 当前轮次的士兵等级，默认0级。说明：有可能战场上有多个不同等级的士兵
     public static currentLevel: number = 0; 
-    // 士兵每级对应的属性
+    // 士兵每级对应的属性，对应的index表示士兵等级对应的属性，默认 index=0（表示士兵等级0级对应的属性）
     public static levels = [{maxHealth:100, score:10, money:3, speed:5}];
 
     // 该士兵的进攻路线
@@ -31,15 +31,68 @@ class Soldier extends egret.DisplayObjectContainer{
     private maxHealth:number = 0;
     // 当前士兵的生命值
     private health:number = 0;
-    // 
+    // 当前士兵的生命条
+    private healthBar: egret.MovieClip;
+    private healthBarBg: egret.MovieClip;
     
 
     public constructor() {
         super();
+
+        this.create();
     }
     
     // 每两轮升级一次士兵等级，对应士兵属性也升级，查看 EnemyFactory类（currentLevel）
     public static setLevel(target:Soldier, level:number) {
-        
+        if (typeof target === 'undefined' && typeof level === 'undefined' ) {
+            return;
+        }
+        // 要新增的等级大于当前等级，添加该级别对应的士兵属性到属性列表中（说明：levels 默认长度为1, level从0开始--currentLevel）
+        if (level >= Soldier.levels.length) {
+            // 当前级别对应的属性
+            let nowLevel = Soldier.levels[level-1];
+            // 新增新的级别属性，每升一级属性值相对当前级别都升一级
+            // 关于下面位移取整说明：位移运算只用于整数，如果带小数的数据参与位移运算会被取整 移动0位其实并没有移动，相当于 Math.floor(1.5) || parseInt(1.5,10)
+            Soldier.levels[level].maxHealth = (nowLevel.maxHealth * 1.50) >>0;
+            Soldier.levels[level].score = (nowLevel.score * 1.10) >> 0;
+            // level>>1 说明：每升两个级别，money属性较之前两轮的增值幅度加1 ===  0,1 >> 1 =0; 1,2>> 1 =1, 2,3>>2;
+            Soldier.levels[level].money = nowLevel.money+(level>>1);
+            Soldier.levels[level].speed = nowLevel.speed;
+        }
+        // 给当前传入的士兵设置新属性
+        const now = Soldier.levels[level];
+        target.level = level;
+        target.maxHealth = now.maxHealth;
+        target.health = target.maxHealth;
+        target.score = now.score;
+        target.money = now.money;
+        target.speed = now.speed;
     }
+
+    // 获取对应等级的士兵属性
+    public static getLevel(level: number) {
+        if (typeof level === 'undefined') {
+            level = Soldier.currentLevel;
+        }
+        if (level < 0 || level >= Soldier.levels.length) {
+            return null;
+        }
+        return Soldier.levels[level];
+    }
+
+    // 全体新增士兵等级升级
+    public static upgrade() {
+        Soldier.currentLevel++;
+        return Soldier.currentLevel;
+    }
+
+
+    // 创建一个士兵相关属性
+    private create() {
+        // 设置该士兵属性，以及更新全体新增士兵的等级
+        Soldier.setLevel(this, Soldier.currentLevel);
+        // 设置士兵角色动画
+        this.avatar = new egret.MovieClip();
+    }
+
 }
