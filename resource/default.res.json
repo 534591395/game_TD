@@ -165,6 +165,11 @@
 			"name": "soldier_01_png",
 			"type": "image",
 			"url": "assets/TD/soldier_01.png"
+		},
+		{
+			"name": "soldier_01_json",
+			"type": "json",
+			"url": "assets/TD/soldier_01.json"
 		}
 	]
 }

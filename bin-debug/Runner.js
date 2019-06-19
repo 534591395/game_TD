@@ -14,13 +14,17 @@ r.prototype = e.prototype, t.prototype = new r();
 var Runner = (function (_super) {
     __extends(Runner, _super);
     function Runner() {
-        return _super.call(this) || this;
+        var _this = _super.call(this) || this;
+        _this.solider();
+        return _this;
     }
     Runner.prototype.start = function () {
         this.addEventListener(egret.Event.ENTER_FRAME, this.onFrameHandler, this);
     };
     Runner.prototype.gameOver = function () { };
     Runner.prototype.onFrameHandler = function () {
+    };
+    Runner.prototype.solider = function () {
     };
     return Runner;
 }(egret.DisplayObjectContainer));

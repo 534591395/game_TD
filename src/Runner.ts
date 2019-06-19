@@ -7,6 +7,7 @@ class Runner extends egret.DisplayObjectContainer {
 
     public constructor() {
         super();
+        this.solider();
     }
 
     public start() {
@@ -17,5 +18,9 @@ class Runner extends egret.DisplayObjectContainer {
 
     private onFrameHandler() {
 
+    }
+
+    private solider() {
+        
     }
 }
