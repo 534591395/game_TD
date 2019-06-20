@@ -21,7 +21,8 @@ class Soldier extends egret.DisplayObjectContainer{
     // 士兵所在地图坐标（格子坐标）
     public tx: number = -1;
     public ty: number = 3;
-    // 方位（上下左右）
+    // 方位（上下左右）说明：direction[0] 表示左右方向-- 1 表示往右边走，-1 表示往左边走; 
+    // direction[1] 表示往上下方向-- 1 表示往下走， -1 表示往上走；  0 表示不往对应方向走
     public direction: [number, number] = [1,0];
     // avatar 角色 它可以代表角色的位置、方向、运动状态和姿势
     public avatar: egret.MovieClip;
@@ -86,13 +87,41 @@ class Soldier extends egret.DisplayObjectContainer{
         return Soldier.currentLevel;
     }
 
+    // 设置士兵走动方向动画
+    public setDirection(direction:[number, number]) {
+        if (this.direction[0] == direction[1] && this.direction[1] == direction[1]) {
+            return;
+        }
+        this.direction = direction;
+
+        // 往右边走 walk right  
+        if (direction[0] == 1) {
+            this.avatar.scaleX = 1;
+            this.avatar.gotoAndPlay("walkRight", -1);
+        } else
+        // 往左走 walk left
+        if (direction[0] == -1) {
+            this.avatar.scaleX = -1;
+            this.avatar.gotoAndPlay("walkRight", -1);
+        }
+    }
+
 
     // 创建一个士兵相关属性
     private create() {
         // 设置该士兵属性，以及更新全体新增士兵的等级
         Soldier.setLevel(this, Soldier.currentLevel);
         // 设置士兵角色动画
-        this.avatar = new egret.MovieClip();
+        const data = RES.getRes("solider_json");
+        const txtr = RES.getRes("solider_png");
+        const mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+        this.avatar = new egret.MovieClip( mcFactory.generateMovieClipData( "action" ) );
+        this.addChild( this.avatar );
+
+        // TODO 士兵血条
     }
+
+    
+    
 
 }
