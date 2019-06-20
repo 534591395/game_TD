@@ -29,9 +29,9 @@ class Runner extends egret.DisplayObjectContainer {
         const mc1:egret.MovieClip = new egret.MovieClip( mcFactory.generateMovieClipData( "action" ) );
         this.addChild( mc1 );
         this.mc1 = mc1;
-        this.mc1.gotoAndPlay("walkRight", 1);
+        this.mc1.gotoAndPlay("dealth", 1);
         this.mc1.addEventListener(egret.Event.COMPLETE, (e:egret.Event)=>{
-            this.mc1.gotoAndPlay("walkRight", 1);
+            this.mc1.gotoAndPlay("dealth", 1);
         }, this);
     }
 }

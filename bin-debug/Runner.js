@@ -33,9 +33,9 @@ var Runner = (function (_super) {
         var mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("action"));
         this.addChild(mc1);
         this.mc1 = mc1;
-        this.mc1.gotoAndPlay("walkRight", 1);
+        this.mc1.gotoAndPlay("dealth", 1);
         this.mc1.addEventListener(egret.Event.COMPLETE, function (e) {
-            _this.mc1.gotoAndPlay("walkRight", 1);
+            _this.mc1.gotoAndPlay("dealth", 1);
         }, this);
     };
     return Runner;
