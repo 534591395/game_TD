@@ -1,5 +1,5 @@
 {"mc":{
-	"51f147c6247740d4a590f3f8fa04d3ba":{
+	"action":{
 		"frameRate":24,
 		"labels":[
 			{"name":"walkRight","frame":1,"end":8}
@@ -51,7 +51,7 @@
 			"y":20
 			}
 			]
-},"cba08db166944bd4b8e566906871c7e5":{
+},"action":{
 		"frameRate":24,
 		"labels":[
 			{"name":"dealth","frame":1,"end":5}

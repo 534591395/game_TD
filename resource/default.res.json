@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,font_png,gatling_01_png,gatling_02_png,grasslands_grid_s_png,other_png,soldier_01_png,solider_walkRight_json,solider_walkRight_png,solider_dealth_json,solider_dealth_png,51f147c6247740d4a590f3f8fa04d3ba_gif,cba08db166944bd4b8e566906871c7e5_gif,solder_json,solder_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,font_png,gatling_01_png,gatling_02_png,grasslands_grid_s_png,other_png,soldier_01_png,solider_walkRight_json,solider_walkRight_png,solider_dealth_json,solider_dealth_png,51f147c6247740d4a590f3f8fa04d3ba_gif,cba08db166944bd4b8e566906871c7e5_gif,solider_json,solider_png",
 			"name": "preload"
 		}
 	],
@@ -202,14 +202,14 @@
 			"url": "assets/TD/cba08db166944bd4b8e566906871c7e5.gif"
 		},
 		{
-			"name": "solder_json",
+			"name": "solider_json",
 			"type": "json",
-			"url": "assets/TD/solder.json"
+			"url": "assets/TD/solider.json"
 		},
 		{
-			"name": "solder_png",
+			"name": "solider_png",
 			"type": "image",
-			"url": "assets/TD/solder.png"
+			"url": "assets/TD/solider.png"
 		}
 	]
 }

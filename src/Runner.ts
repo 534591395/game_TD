@@ -23,15 +23,15 @@ class Runner extends egret.DisplayObjectContainer {
     }
 
     private solider() {
-        const data = RES.getRes("solider_walkRight_json");
-        const txtr = RES.getRes("solider_walkRight_png");
+        const data = RES.getRes("solider_json");
+        const txtr = RES.getRes("solider_png");
         const mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
-        const mc1:egret.MovieClip = new egret.MovieClip( mcFactory.generateMovieClipData( "walkRight" ) );
+        const mc1:egret.MovieClip = new egret.MovieClip( mcFactory.generateMovieClipData( "action" ) );
         this.addChild( mc1 );
         this.mc1 = mc1;
-        this.mc1.gotoAndPlay(1);
+        this.mc1.gotoAndPlay("walkRight", 1);
         this.mc1.addEventListener(egret.Event.COMPLETE, (e:egret.Event)=>{
-            this.mc1.gotoAndPlay(1);
+            this.mc1.gotoAndPlay("walkRight", 1);
         }, this);
     }
 }

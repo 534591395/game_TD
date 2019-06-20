@@ -27,15 +27,15 @@ var Runner = (function (_super) {
     };
     Runner.prototype.solider = function () {
         var _this = this;
-        var data = RES.getRes("solider_walkRight_json");
-        var txtr = RES.getRes("solider_walkRight_png");
+        var data = RES.getRes("solider_json");
+        var txtr = RES.getRes("solider_png");
         var mcFactory = new egret.MovieClipDataFactory(data, txtr);
-        var mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("walkRight"));
+        var mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("action"));
         this.addChild(mc1);
         this.mc1 = mc1;
-        this.mc1.gotoAndPlay(1);
+        this.mc1.gotoAndPlay("walkRight", 1);
         this.mc1.addEventListener(egret.Event.COMPLETE, function (e) {
-            _this.mc1.gotoAndPlay(1);
+            _this.mc1.gotoAndPlay("walkRight", 1);
         }, this);
     };
     return Runner;
