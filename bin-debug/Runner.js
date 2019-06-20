@@ -16,6 +16,7 @@ var Runner = (function (_super) {
     function Runner() {
         var _this = _super.call(this) || this;
         _this.solider();
+        _this.start();
         return _this;
     }
     Runner.prototype.start = function () {
@@ -25,6 +26,17 @@ var Runner = (function (_super) {
     Runner.prototype.onFrameHandler = function () {
     };
     Runner.prototype.solider = function () {
+        var _this = this;
+        var data = RES.getRes("solider_walkRight_json");
+        var txtr = RES.getRes("solider_walkRight_png");
+        var mcFactory = new egret.MovieClipDataFactory(data, txtr);
+        var mc1 = new egret.MovieClip(mcFactory.generateMovieClipData("walkRight"));
+        this.addChild(mc1);
+        this.mc1 = mc1;
+        this.mc1.gotoAndPlay(1);
+        this.mc1.addEventListener(egret.Event.COMPLETE, function (e) {
+            _this.mc1.gotoAndPlay(1);
+        }, this);
     };
     return Runner;
 }(egret.DisplayObjectContainer));
