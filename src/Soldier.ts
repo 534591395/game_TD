@@ -99,13 +99,48 @@ class Soldier extends egret.DisplayObjectContainer{
             this.avatar.scaleX = 1;
             this.avatar.gotoAndPlay("walkRight", -1);
         } else
-        // 往左走 walk left
+        // 往左走 walk left TODO
         if (direction[0] == -1) {
             this.avatar.scaleX = -1;
             this.avatar.gotoAndPlay("walkRight", -1);
+        } else
+        // 往下走 walk down
+        if (direction[1] == 1) {
+            this.avatar.gotoAndPlay("walkDown", -1);
+        } else 
+        if (direction[1] == -1) {
+            this.avatar.gotoAndPlay("walkTop", -1);
         }
     }
 
+    // 士兵中弹
+    public getShot(damage:number) {
+        // 中弹后扣掉生命值
+        this.health -= damage;
+        // 当扣除生命值小于0时，生命值重新设置为0.（伤害大小不一定）
+        if (this.health < 0) {
+            this.health = 0;
+        }
+        const percent = this.health / this.maxHealth;
+        // 更新生命血条,四舍五入，血条长度为40
+        let healthWidth = Math.round(40 * percent);
+        if (this.healthBar) {
+            this.healthBar.width = healthWidth;
+        }
+    }
+    
+    // 判断士兵是否死亡
+    public isDead() {
+        return this.health == 0;
+    }
+
+    // 士兵死亡后的动画播放是否结束（结束了就销毁）
+    public isDeadFinished() {
+        // TODO
+    }
+    
+    // TODO
+    public render() {}
 
     // 创建一个士兵相关属性
     private create() {
@@ -120,7 +155,18 @@ class Soldier extends egret.DisplayObjectContainer{
 
         // TODO 士兵血条
     }
+    
+    // 士兵死亡动画
+    private animateDeath() {
+        this.removeChild(this.healthBar);
+        this.removeChild(this.healthBarBg);
+        this.healthBar = null;
+        this.healthBarBg = null;
 
+        // TODO
+    }
+
+    // 
     
     
 
