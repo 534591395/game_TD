@@ -97,19 +97,18 @@ class Soldier extends egret.DisplayObjectContainer{
         // 往右边走 walk right  
         if (direction[0] == 1) {
             this.avatar.scaleX = 1;
-            this.avatar.gotoAndPlay("walkRight", -1);
+            this.avatar.gotoAndPlay("solider_walk_right", -1);
         } else
         // 往左走 walk left TODO
         if (direction[0] == -1) {
-            this.avatar.scaleX = -1;
-            this.avatar.gotoAndPlay("walkRight", -1);
+            this.avatar.gotoAndPlay("solider_walk_left", -1);
         } else
         // 往下走 walk down
         if (direction[1] == 1) {
-            this.avatar.gotoAndPlay("walkDown", -1);
+            this.avatar.gotoAndPlay("solider_walk_down", -1);
         } else 
         if (direction[1] == -1) {
-            this.avatar.gotoAndPlay("walkTop", -1);
+            this.avatar.gotoAndPlay("solider_walk_top", -1);
         }
     }
 
@@ -147,8 +146,8 @@ class Soldier extends egret.DisplayObjectContainer{
         // 设置该士兵属性，以及更新全体新增士兵的等级
         Soldier.setLevel(this, Soldier.currentLevel);
         // 设置士兵角色动画
-        const data = RES.getRes("solider_json");
-        const txtr = RES.getRes("solider_png");
+        const data = RES.getRes("solider_animation_json");
+        const txtr = RES.getRes("solider_animation_png");
         const mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
         this.avatar = new egret.MovieClip( mcFactory.generateMovieClipData( "action" ) );
         this.addChild( this.avatar );
