@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,font_png,gatling_01_png,gatling_02_png,grasslands_grid_s_png,other_png,soldier_01_png,solider_walkRight_json,solider_walkRight_png,solider_dealth_json,solider_dealth_png,51f147c6247740d4a590f3f8fa04d3ba_gif,cba08db166944bd4b8e566906871c7e5_gif,solider_json,solider_png,51f147c6247740d4a590f3f8fa04d3ba2_gif,cba08db166944bd4b8e566906871c7e52_gif,solider2_json,solider2_png,solider_01_json,solider_dealth2_json,solider_dealth2_png,solider_walkRight2_json,solider_walkRight2_png,solider_walk_right_gif,solider_walk_down_gif,solider_walk_top_gif,solider_walk_left_gif,solider_deathRightForwards_gif,solider_deathRightBackwards_gif,solider_deathDownBackwards_gif,solider_animation_json,solider_animation_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,font_png,gatling_01_png,gatling_02_png,grasslands_grid_s_png,other_png,soldier_01_png,solider_walk_right_gif,solider_walk_down_gif,solider_walk_top_gif,solider_walk_left_gif,solider_deathRightForwards_gif,solider_deathRightBackwards_gif,solider_deathDownBackwards_gif,solider_animation_json,solider_animation_png,solider_animation2_json,solider_animation2_png,solider_deathDownBackwards2_gif,solider_deathRightBackwards2_gif,solider_deathRightForwards2_gif,solider_walk_down2_gif,solider_walk_left2_gif,solider_walk_right2_gif,solider_walk_top2_gif",
 			"name": "preload"
 		}
 	],
@@ -172,91 +172,6 @@
 			"name": "soldier_01_json"
 		},
 		{
-			"url": "assets/TD/solider_walkRight.json",
-			"type": "json",
-			"name": "solider_walkRight_json"
-		},
-		{
-			"url": "assets/TD/solider_walkRight.png",
-			"type": "image",
-			"name": "solider_walkRight_png"
-		},
-		{
-			"name": "solider_dealth_json",
-			"type": "json",
-			"url": "assets/TD/solider_dealth.json"
-		},
-		{
-			"name": "solider_dealth_png",
-			"type": "image",
-			"url": "assets/TD/solider_dealth.png"
-		},
-		{
-			"name": "51f147c6247740d4a590f3f8fa04d3ba_gif",
-			"type": "image",
-			"url": "assets/TD/51f147c6247740d4a590f3f8fa04d3ba.gif"
-		},
-		{
-			"name": "cba08db166944bd4b8e566906871c7e5_gif",
-			"type": "image",
-			"url": "assets/TD/cba08db166944bd4b8e566906871c7e5.gif"
-		},
-		{
-			"name": "solider_json",
-			"type": "json",
-			"url": "assets/TD/solider.json"
-		},
-		{
-			"name": "solider_png",
-			"type": "image",
-			"url": "assets/TD/solider.png"
-		},
-		{
-			"name": "51f147c6247740d4a590f3f8fa04d3ba2_gif",
-			"type": "image",
-			"url": "assets/TD/51f147c6247740d4a590f3f8fa04d3ba.gif"
-		},
-		{
-			"name": "cba08db166944bd4b8e566906871c7e52_gif",
-			"type": "image",
-			"url": "assets/TD/cba08db166944bd4b8e566906871c7e5.gif"
-		},
-		{
-			"name": "solider2_json",
-			"type": "json",
-			"url": "assets/TD/solider.json"
-		},
-		{
-			"name": "solider2_png",
-			"type": "image",
-			"url": "assets/TD/solider.png"
-		},
-		{
-			"name": "solider_01_json",
-			"type": "json",
-			"url": "assets/TD/solider_01.json"
-		},
-		{
-			"name": "solider_dealth2_json",
-			"type": "json",
-			"url": "assets/TD/solider_dealth.json"
-		},
-		{
-			"name": "solider_dealth2_png",
-			"type": "image",
-			"url": "assets/TD/solider_dealth.png"
-		},
-		{
-			"name": "solider_walkRight2_json",
-			"type": "json",
-			"url": "assets/TD/solider_walkRight.json"
-		},
-		{
-			"name": "solider_walkRight2_png",
-			"type": "image",
-			"url": "assets/TD/solider_walkRight.png"
-		},
-		{
 			"name": "solider_walk_right_gif",
 			"type": "image",
 			"url": "assets/TD/solider_walk_right.gif"
@@ -300,6 +215,51 @@
 			"name": "solider_animation_png",
 			"type": "image",
 			"url": "assets/TD/solider_animation.png"
+		},
+		{
+			"name": "solider_animation2_json",
+			"type": "json",
+			"url": "assets/TD/solider_animation.json"
+		},
+		{
+			"name": "solider_animation2_png",
+			"type": "image",
+			"url": "assets/TD/solider_animation.png"
+		},
+		{
+			"name": "solider_deathDownBackwards2_gif",
+			"type": "image",
+			"url": "assets/TD/solider_deathDownBackwards.gif"
+		},
+		{
+			"name": "solider_deathRightBackwards2_gif",
+			"type": "image",
+			"url": "assets/TD/solider_deathRightBackwards.gif"
+		},
+		{
+			"name": "solider_deathRightForwards2_gif",
+			"type": "image",
+			"url": "assets/TD/solider_deathRightForwards.gif"
+		},
+		{
+			"name": "solider_walk_down2_gif",
+			"type": "image",
+			"url": "assets/TD/solider_walk_down.gif"
+		},
+		{
+			"name": "solider_walk_left2_gif",
+			"type": "image",
+			"url": "assets/TD/solider_walk_left.gif"
+		},
+		{
+			"name": "solider_walk_right2_gif",
+			"type": "image",
+			"url": "assets/TD/solider_walk_right.gif"
+		},
+		{
+			"name": "solider_walk_top2_gif",
+			"type": "image",
+			"url": "assets/TD/solider_walk_top.gif"
 		}
 	]
 }
