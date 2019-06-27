@@ -23,6 +23,9 @@ var Runner = (function (_super) {
         // 实例一个玩家（当前只有一个）
         this.player = new Player();
         this.addChild(this.player);
+        this.enemyFactory = new EnemyFactory(this.player);
+        this.addChild(this.enemyFactory);
+        this.enemyFactory.nextRound();
         this.addEventListener(egret.Event.ENTER_FRAME, this.onFrameHandler, this);
     };
     Runner.prototype.gameOver = function () { };

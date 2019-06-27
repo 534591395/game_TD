@@ -35,6 +35,7 @@ var EnemyFactory = (function (_super) {
         // 所有轮次生成的士兵总个数
         _this.count = 0;
         _this.player = player;
+        _this.resume();
         return _this;
     }
     // 游戏重置

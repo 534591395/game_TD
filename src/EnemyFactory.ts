@@ -32,6 +32,7 @@ class EnemyFactory extends egret.DisplayObjectContainer{
     public constructor(player:Player) {
         super();
         this.player = player;
+        this.resume();
     }
     
     // 游戏重置

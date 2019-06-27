@@ -114,9 +114,17 @@ class Player extends egret.DisplayObjectContainer {
       const ty = Math.round( (target.y - this.startPoint[1]) / this.tileHeight ); 
       return [tx, ty];
    }
-
+   
+   // 设置目标下一步的移动方向 ?
    private getNextDirection(target:Soldier) {
-       return null;
+       let nextArr = [];
+       target.path.map((path, i) => {
+           if (path[0] == target.tx && path[1] == target.ty) {
+               let next = target.path[i+1];
+               nextArr = [next[0]-target.tx, next[1]-target.ty];
+           }
+       });
+       return nextArr.length ? nextArr : null;
    }
 
    // 移动敌人
@@ -138,13 +146,35 @@ class Player extends egret.DisplayObjectContainer {
                // 如果当前瓦片格子走完了，走下一个瓦片格子
                if (dx == 0) {
                    target.setDirection(this.getNextDirection(target));
+                   target.tx += target.direction[0];
+                   target.ty += target.direction[1];
                }
+               this.moveByDirection(target);
+           } else
+           if (target.direction[1] != 0) {
+               let dy = target.x - ( this.startPoint[1] + tile[1] *  this.tileHeight );
+               // 如果当前瓦片格子走完了，走下一个瓦片格子  ?
+               if (dy == -5) {
+                   target.setDirection(this.getNextDirection(target));
+                   target.tx += target.direction[0];
+                   target.ty += target.direction[1];
+               }
+               this.moveByDirection(target);
            }
        }
    }
-
+   
+   // 根据移动方位设置目标坐标 ?
    private moveByDirection(target:Soldier) {
-       
+       if (!target.direction) {
+           return;
+       }
+       if (target.direction[0] != 0) {
+           target.x += target.speed * target.direction[0];
+       } else
+       if (target.direction[1] != 0) {
+           target.y += target.speed * target.direction[1];
+       }
    }
 
    // 添加武器，每次添加一个武器后，需重新计算path（障碍物变更）
