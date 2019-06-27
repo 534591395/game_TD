@@ -14,8 +14,6 @@ class Player extends egret.DisplayObjectContainer {
    // 玩家属性
    // 金币
    private money:number = 0;
-   // 生命值
-   private life:number = 0;
    // 分数
    private score:number = 0;
    // 武器
@@ -26,6 +24,8 @@ class Player extends egret.DisplayObjectContainer {
    // 路径集合（敌人可走）
    private path:any;
 
+   // 生命值
+   public life:number = 0;
    // 当前玩家进行的游戏轮次
    public round: number = 1;
 
@@ -106,11 +106,21 @@ class Player extends egret.DisplayObjectContainer {
        });
        return weapon;
    }
+   
+   // 通过目标坐标，获取当前所在的瓦片地图格子坐标
+   private getTile(target) {
+       // 四舍五入
+      const tx = Math.round( (target.x - this.startPoint[0]) / this.tileWidth );
+      const ty = Math.round( (target.y - this.startPoint[1]) / this.tileHeight ); 
+      return [tx, ty];
+   }
 
-   private getTile(target) {}
+   private getNextDirection(target:Soldier) {
+       return null;
+   }
 
    // 移动敌人
-   private moveTarget(target) {
+   private moveTarget(target:Soldier) {
        if (target.x < this.startPoint[0]) {
            let x = target.x + target.speed;
            if (x < this.startPoint[0]) {
@@ -122,10 +132,19 @@ class Player extends egret.DisplayObjectContainer {
            }
        } else {
            let tile = this.getTile(target);
+           // direction[0] !=0 表示目标在x轴方向移动（具体查看Soldier类注释）
            if (target.direction[0] != 0) {
-
+               let dx = target.x - ( this.startPoint[0] + tile[0] *  this.tileWidth );
+               // 如果当前瓦片格子走完了，走下一个瓦片格子
+               if (dx == 0) {
+                   target.setDirection(this.getNextDirection(target));
+               }
            }
        }
+   }
+
+   private moveByDirection(target:Soldier) {
+       
    }
 
    // 添加武器，每次添加一个武器后，需重新计算path（障碍物变更）
@@ -148,7 +167,31 @@ class Player extends egret.DisplayObjectContainer {
 
    // 自动攻击
    public autoAttack() {
-
+       let soldiers = [];
+       this.targets.map((soldier:Soldier, i) => {
+           // 死亡动画结束了后，清除士兵尸体
+           if (soldier.isDeadFinished()) {
+               this.removeChild(soldier);
+           } else
+           // 士兵死亡后，玩家获取金币和分数
+           if (soldier.isDead()) {
+                this.money += soldier.money;
+                this.score += soldier.score;
+                // 此时该士兵金币变为空
+                soldier.money = 0;
+                soldiers.push(soldier);
+           } else 
+           // 若士兵逃脱了（移动超出屏幕了），玩家扣生命值
+           if (soldier.x >= this.stage.stageWidth + soldier.width) {
+                this.life --;
+                this.removeChild(soldier);
+           } else {
+               // 士兵移动
+               this.moveTarget(soldier);
+               soldiers.push(soldier);
+           }
+       });
+       this.targets = soldiers;
    }
 
    // 添加敌人

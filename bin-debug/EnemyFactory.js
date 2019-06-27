@@ -37,7 +37,7 @@ var EnemyFactory = (function (_super) {
         _this.player = player;
         return _this;
     }
-    // 重置
+    // 游戏重置
     EnemyFactory.prototype.resume = function () {
         // 当前轮次生成的士兵个数（一轮刚开始时），游戏开始倒计时开始
         if (this.roundCount == 0) {
@@ -56,6 +56,7 @@ var EnemyFactory = (function (_super) {
     // 运行游戏
     EnemyFactory.prototype.run = function () {
         if (!this.createTimer) {
+            // 每隔一段时间创建一个士兵
             var time = this.time * this.createTime;
             // 倒计时：time-- 间隔时间； time * this.roundTotal -- 总计时（(创建一个士兵花费的时间time)*总兵数）
             this.createTimer = new egret.Timer(time, time * this.roundTotal);
@@ -94,10 +95,11 @@ var EnemyFactory = (function (_super) {
     // 创建士兵结束（一轮）
     EnemyFactory.prototype.createComFn = function () {
         this.createTimer.reset();
-        this.create();
     };
     // 创建士兵过程（一轮）
-    EnemyFactory.prototype.createFn = function () { };
+    EnemyFactory.prototype.createFn = function () {
+        this.create();
+    };
     // 创建士兵
     EnemyFactory.prototype.create = function () {
         // 若当前轮次生成的士兵个数大于等于当前轮次士兵总个数，停止当前轮次(0-19)

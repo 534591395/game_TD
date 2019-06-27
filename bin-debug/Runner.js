@@ -16,14 +16,22 @@ var Runner = (function (_super) {
     function Runner() {
         var _this = _super.call(this) || this;
         _this.start();
-        _this.solider();
         return _this;
+        //this.solider()
     }
     Runner.prototype.start = function () {
+        // 实例一个玩家（当前只有一个）
+        this.player = new Player();
+        this.addChild(this.player);
         this.addEventListener(egret.Event.ENTER_FRAME, this.onFrameHandler, this);
     };
     Runner.prototype.gameOver = function () { };
     Runner.prototype.onFrameHandler = function () {
+        if (this.player.life == 0) {
+            this.gameOver();
+            return;
+        }
+        this.player.autoAttack();
     };
     Runner.prototype.solider = function () {
         var data = RES.getRes("solider_animation_json");

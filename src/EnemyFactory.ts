@@ -34,7 +34,7 @@ class EnemyFactory extends egret.DisplayObjectContainer{
         this.player = player;
     }
     
-    // 重置
+    // 游戏重置
     public resume() {
         // 当前轮次生成的士兵个数（一轮刚开始时），游戏开始倒计时开始
         if (this.roundCount == 0) {
@@ -55,6 +55,7 @@ class EnemyFactory extends egret.DisplayObjectContainer{
     // 运行游戏
     public run() {
         if (!this.createTimer) {
+            // 每隔一段时间创建一个士兵
             let time = this.time * this.createTime;
             // 倒计时：time-- 间隔时间； time * this.roundTotal -- 总计时（(创建一个士兵花费的时间time)*总兵数）
             this.createTimer = new egret.Timer(time, time * this.roundTotal);
@@ -100,11 +101,12 @@ class EnemyFactory extends egret.DisplayObjectContainer{
     // 创建士兵结束（一轮）
     private createComFn() {
         this.createTimer.reset();
-        this.create();
     }
     
     // 创建士兵过程（一轮）
-    private createFn() {}
+    private createFn() {
+        this.create();
+    }
 
     // 创建士兵
     private create() {

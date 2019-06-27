@@ -10,17 +10,25 @@ class Runner extends egret.DisplayObjectContainer {
         super();
        
         this.start();
-        this.solider()
+        //this.solider()
     }
 
     public start() {
+        // 实例一个玩家（当前只有一个）
+        this.player = new Player();
+        this.addChild(this.player); 
+
         this.addEventListener(egret.Event.ENTER_FRAME, this.onFrameHandler, this);
     }
 
     public gameOver() {}
 
     private onFrameHandler() {
-        
+        if (this.player.life == 0) {
+            this.gameOver();
+            return;
+        }
+        this.player.autoAttack();
     }
 
 
