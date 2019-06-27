@@ -35,6 +35,8 @@ class Soldier extends egret.DisplayObjectContainer{
     // 当前士兵的生命条
     private healthBar: egret.MovieClip;
     private healthBarBg: egret.MovieClip;
+    // 士兵死亡动画结束
+    private deadFinished: boolean;
     
 
     public constructor() {
@@ -135,11 +137,15 @@ class Soldier extends egret.DisplayObjectContainer{
 
     // 士兵死亡后的动画播放是否结束（结束了就销毁）
     public isDeadFinished() {
-        // TODO
+        return this.deadFinished;
     }
     
     // TODO
-    public render() {}
+    public render() {
+        if (this.isDead()) {
+            this.animateDeath();
+        }
+    }
 
     // 创建一个士兵相关属性
     private create() {
@@ -154,6 +160,10 @@ class Soldier extends egret.DisplayObjectContainer{
 
         // TODO 士兵血条
     }
+
+    private setDeadFinishedOK() {
+        this.deadFinished = true;
+    }
     
     // 士兵死亡动画
     private animateDeath() {
@@ -161,8 +171,26 @@ class Soldier extends egret.DisplayObjectContainer{
         this.removeChild(this.healthBarBg);
         this.healthBar = null;
         this.healthBarBg = null;
-
-        // TODO
+        
+        // solider_deathRightForwards
+        if (this.direction[0] == 1) {
+            this.avatar.gotoAndPlay("solider_deathRightForwards", 1);
+        } else 
+        // solider_deathRightBackwards
+        if (this.direction[0] == -1) {
+            this.avatar.gotoAndPlay("solider_deathRightBackwards", 1);
+        } else
+        // solider_deathDownBackwards
+        if (this.direction[1] == 1) {
+            this.avatar.gotoAndPlay("solider_deathDownBackwards", 1);
+        } else
+        // solider_deathDownBackwards
+        if (this.direction[1] == -1) {
+            this.avatar.gotoAndPlay("solider_deathTopForwards", 1);
+        }
+        this.deadFinished = false;
+        // removeEventListener
+        this.avatar.addEventListener(egret.Event.COMPLETE, this.setDeadFinishedOK, this);
     }
 
     // 
