@@ -13,11 +13,11 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 var EnemyFactory = (function (_super) {
     __extends(EnemyFactory, _super);
-    function EnemyFactory(player) {
+    function EnemyFactory(player, parent) {
         var _this = _super.call(this) || this;
         // 士兵默认坐标（初始生成坐标）
         _this.soldierStartX = 0;
-        _this.soldierStartY = 315;
+        _this.soldierStartY = 0;
         // 一轮生成士兵的个数（每轮累加，下一轮清零）
         _this.roundCount = 0;
         // 一轮生成士兵的总个数
@@ -35,9 +35,15 @@ var EnemyFactory = (function (_super) {
         // 所有轮次生成的士兵总个数
         _this.count = 0;
         _this.player = player;
-        _this.resume();
+        _this.parent = parent;
+        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
+    EnemyFactory.prototype.onAddToStage = function () {
+        this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        this.soldierStartY = this.stage.stageHeight / 2 - 30;
+        this.resume();
+    };
     // 游戏重置
     EnemyFactory.prototype.resume = function () {
         // 当前轮次生成的士兵个数（一轮刚开始时），游戏开始倒计时开始
@@ -115,7 +121,7 @@ var EnemyFactory = (function (_super) {
         // 将敌人加入玩家视野
         this.player.addTarget(soldier);
         // 加入场景
-        this.addChild(soldier);
+        this.parent.addChild(soldier);
         // 计数
         this.count++;
         this.roundCount++;

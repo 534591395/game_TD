@@ -10,20 +10,21 @@ class Runner extends egret.DisplayObjectContainer {
     public constructor() {
         super();
        
-        this.start();
-        //this.solider()
+        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.start, this);
     }
 
     public start() {
+        this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.start, this);
         // 实例一个玩家（当前只有一个）
-        this.player = new Player();
+        this.player = new Player(this);
         this.addChild(this.player); 
 
-        this.enemyFactory = new EnemyFactory(this.player);
+        this.enemyFactory = new EnemyFactory(this.player, this);
         this.addChild(this.enemyFactory);
 
-        this.enemyFactory.nextRound();
-
+        //this.enemyFactory.nextRound();
+        
+        // 监听帧率，让精灵们动起来
         this.addEventListener(egret.Event.ENTER_FRAME, this.onFrameHandler, this);
     }
 

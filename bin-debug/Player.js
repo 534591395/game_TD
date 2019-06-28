@@ -14,10 +14,10 @@ r.prototype = e.prototype, t.prototype = new r();
  */
 var Player = (function (_super) {
     __extends(Player, _super);
-    function Player() {
+    function Player(parent) {
         var _this = _super.call(this) || this;
         // 地图属性
-        _this.startPoint = [105, 140];
+        _this.startPoint = [1, 140];
         _this.tileWidth = 60;
         _this.tileHeight = 60;
         // 格子个数
@@ -37,6 +37,7 @@ var Player = (function (_super) {
         // 当前玩家进行的游戏轮次
         _this.round = 1;
         _this.reset();
+        _this.parent = parent;
         return _this;
     }
     // 重置玩家属性
@@ -198,7 +199,7 @@ var Player = (function (_super) {
         this.targets.map(function (soldier, i) {
             // 死亡动画结束了后，清除士兵尸体
             if (soldier.isDeadFinished()) {
-                _this.removeChild(soldier);
+                _this.parent.removeChild(soldier);
             }
             else 
             // 士兵死亡后，玩家获取金币和分数
@@ -213,7 +214,7 @@ var Player = (function (_super) {
             // 若士兵逃脱了（移动超出屏幕了），玩家扣生命值
             if (soldier.x >= _this.stage.stageWidth + soldier.width) {
                 _this.life--;
-                _this.removeChild(soldier);
+                _this.parent.removeChild(soldier);
             }
             else {
                 // 士兵移动

@@ -6,7 +6,7 @@ class EnemyFactory extends egret.DisplayObjectContainer{
     private player:Player;
     // 士兵默认坐标（初始生成坐标）
     private soldierStartX: number = 0;
-    private soldierStartY: number = 315;
+    private soldierStartY: number = 0;
     // 一轮生成士兵的个数（每轮累加，下一轮清零）
     private roundCount: number = 0;
     // 一轮生成士兵的总个数
@@ -22,16 +22,27 @@ class EnemyFactory extends egret.DisplayObjectContainer{
     // 创建士兵频率
     private createTime: number = 1.5;
     
+    
     // 当前轮次开始标志
     public started: boolean = false;
     // 当前轮次（每轮开始累加）
     public round: number = 0;
     // 所有轮次生成的士兵总个数
     public count: number = 0;
+    public parent:egret.DisplayObjectContainer;
 
-    public constructor(player:Player) {
+    public constructor(player:Player, parent:egret.DisplayObjectContainer) {
         super();
         this.player = player;
+        this.parent = parent;
+        
+        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        
+    }
+
+    private onAddToStage() {
+        this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        this.soldierStartY = this.stage.stageHeight/2 -30;
         this.resume();
     }
     
@@ -124,7 +135,7 @@ class EnemyFactory extends egret.DisplayObjectContainer{
         // 将敌人加入玩家视野
         this.player.addTarget(soldier);
         // 加入场景
-        this.addChild(soldier);
+        this.parent.addChild(soldier);
         
         // 计数
         this.count++;

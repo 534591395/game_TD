@@ -4,7 +4,7 @@
  */
 class Player extends egret.DisplayObjectContainer {
    // 地图属性
-   private startPoint:[number] = [105, 140];
+   private startPoint:[number] = [1, 140];
    private tileWidth = 60;
    private tileHeight = 60;
    // 格子个数
@@ -23,15 +23,18 @@ class Player extends egret.DisplayObjectContainer {
    private targets = [];
    // 路径集合（敌人可走）
    private path:any;
+   
 
    // 生命值
    public life:number = 0;
    // 当前玩家进行的游戏轮次
    public round: number = 1;
+   public parent:egret.DisplayObjectContainer;
 
-   public constructor() {
+   public constructor(parent) {
         super();
         this.reset();
+        this.parent = parent;
    }
 
    // 重置玩家属性
@@ -201,7 +204,7 @@ class Player extends egret.DisplayObjectContainer {
        this.targets.map((soldier:Soldier, i) => {
            // 死亡动画结束了后，清除士兵尸体
            if (soldier.isDeadFinished()) {
-               this.removeChild(soldier);
+               this.parent.removeChild(soldier);
            } else
            // 士兵死亡后，玩家获取金币和分数
            if (soldier.isDead()) {
@@ -214,7 +217,7 @@ class Player extends egret.DisplayObjectContainer {
            // 若士兵逃脱了（移动超出屏幕了），玩家扣生命值
            if (soldier.x >= this.stage.stageWidth + soldier.width) {
                 this.life --;
-                this.removeChild(soldier);
+                this.parent.removeChild(soldier);
            } else {
                // 士兵移动
                this.moveTarget(soldier);

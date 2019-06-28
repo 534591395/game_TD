@@ -15,17 +15,18 @@ var Runner = (function (_super) {
     __extends(Runner, _super);
     function Runner() {
         var _this = _super.call(this) || this;
-        _this.start();
+        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.start, _this);
         return _this;
-        //this.solider()
     }
     Runner.prototype.start = function () {
+        this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.start, this);
         // 实例一个玩家（当前只有一个）
-        this.player = new Player();
+        this.player = new Player(this);
         this.addChild(this.player);
-        this.enemyFactory = new EnemyFactory(this.player);
+        this.enemyFactory = new EnemyFactory(this.player, this);
         this.addChild(this.enemyFactory);
-        this.enemyFactory.nextRound();
+        //this.enemyFactory.nextRound();
+        // 监听帧率，让精灵们动起来
         this.addEventListener(egret.Event.ENTER_FRAME, this.onFrameHandler, this);
     };
     Runner.prototype.gameOver = function () { };
