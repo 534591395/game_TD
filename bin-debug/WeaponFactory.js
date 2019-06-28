@@ -13,10 +13,11 @@ r.prototype = e.prototype, t.prototype = new r();
  */
 var WeaponFactory = (function (_super) {
     __extends(WeaponFactory, _super);
-    function WeaponFactory(player, parent) {
+    function WeaponFactory(player, parent, weaponTool) {
         var _this = _super.call(this) || this;
         _this.player = player;
         _this.parent = parent;
+        _this.weaponTool = weaponTool;
         _this.addEventListener(egret.TouchEvent.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
@@ -44,6 +45,11 @@ var WeaponFactory = (function (_super) {
     };
     // 判断上是否能够创建武器，通过钱来判断
     WeaponFactory.prototype.canCreate = function () {
+    };
+    // 可创建时武器动画效果
+    WeaponFactory.prototype.updateWeapon = function () {
+        if (this.canCreate()) {
+        }
     };
     return WeaponFactory;
 }(egret.DisplayObjectContainer));

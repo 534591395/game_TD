@@ -13,7 +13,7 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 var WeaponTool = (function (_super) {
     __extends(WeaponTool, _super);
-    function WeaponTool() {
+    function WeaponTool(player, parent) {
         return _super.call(this) || this;
     }
     return WeaponTool;

@@ -23,6 +23,11 @@ var Runner = (function (_super) {
         // 实例一个玩家（当前只有一个）
         this.player = new Player(this);
         this.addChild(this.player);
+        // 武器帮助类
+        this.weaponTool = new WeaponTool(this.player, this);
+        // 武器制造类
+        this.weaponFactory = new WeaponFactory(this.player, this, this.weaponTool);
+        this.addChild(this.weaponFactory);
         this.enemyFactory = new EnemyFactory(this.player, this);
         this.addChild(this.enemyFactory);
         //this.enemyFactory.nextRound();

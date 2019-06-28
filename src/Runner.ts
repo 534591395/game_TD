@@ -4,6 +4,8 @@
 class Runner extends egret.DisplayObjectContainer {
     private player: Player;   
     private enemyFactory: EnemyFactory;
+    private weaponTool: WeaponTool;
+    private weaponFactory: WeaponFactory;
     
     private mc1;
 
@@ -19,8 +21,16 @@ class Runner extends egret.DisplayObjectContainer {
         this.player = new Player(this);
         this.addChild(this.player); 
 
+        // 武器帮助类
+        this.weaponTool = new WeaponTool(this.player, this);
+        // 武器制造类
+        this.weaponFactory = new WeaponFactory(this.player, this, this.weaponTool);
+        this.addChild(this.weaponFactory);
+
+
         this.enemyFactory = new EnemyFactory(this.player, this);
         this.addChild(this.enemyFactory);
+        
 
         //this.enemyFactory.nextRound();
         

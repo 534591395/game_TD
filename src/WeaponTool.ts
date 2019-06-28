@@ -3,7 +3,7 @@
  */
 
 class WeaponTool extends egret.DisplayObjectContainer {
-    constructor() {
+    constructor(player:Player, parent:egret.DisplayObjectContainer) {
         super();
     }
 }
