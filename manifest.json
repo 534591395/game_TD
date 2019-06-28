@@ -12,13 +12,14 @@
 		"utils/PathFinding/bin/pathFinding/pathFinding.js"
 	],
 	"game": [
-		"bin-debug/Player.js",
+		"bin-debug/Platform.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/EnemyFactory.js",
+		"bin-debug/Gatling.js",
 		"bin-debug/LoadingUI.js",
 		"bin-debug/Main.js",
-		"bin-debug/Platform.js",
 		"bin-debug/Astar.js",
+		"bin-debug/Player.js",
 		"bin-debug/Runner.js",
 		"bin-debug/Soldier.js",
 		"bin-debug/ThemeAdapter.js",

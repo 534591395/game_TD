@@ -1,0 +1,50 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+/**
+ * 武器类
+ */
+var WeaponFactory = (function (_super) {
+    __extends(WeaponFactory, _super);
+    function WeaponFactory(player, parent) {
+        var _this = _super.call(this) || this;
+        _this.player = player;
+        _this.parent = parent;
+        _this.addEventListener(egret.TouchEvent.ADDED_TO_STAGE, _this.onAddToStage, _this);
+        return _this;
+    }
+    WeaponFactory.prototype.onAddToStage = function () {
+        //this.touchEnabled = true;
+        // 移动
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMoveHandler, this);
+        // 开始（按下 -down）
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.touchBeginHandler, this);
+        // 结束（离开 -up）
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEndHandler, this);
+    };
+    WeaponFactory.prototype.touchMoveHandler = function () { };
+    WeaponFactory.prototype.touchBeginHandler = function () {
+        this.placeWeapon();
+    };
+    WeaponFactory.prototype.touchEndHandler = function () { };
+    // 放置武器
+    WeaponFactory.prototype.placeWeapon = function () { };
+    // 创建武器
+    WeaponFactory.prototype.createWeapon = function () {
+    };
+    // 获取附近可放置武器的位置
+    WeaponFactory.prototype.getAvailablePositionNearby = function (x, y) {
+    };
+    // 判断上是否能够创建武器，通过钱来判断
+    WeaponFactory.prototype.canCreate = function () {
+    };
+    return WeaponFactory;
+}(egret.DisplayObjectContainer));
+__reflect(WeaponFactory.prototype, "WeaponFactory");
