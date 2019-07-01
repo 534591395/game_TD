@@ -109,7 +109,13 @@ class Main extends eui.UILayer {
 
         let runner = new Runner();
         this.addChild(runner);
+
+        //this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMoveHandler, this);
     }
+
+    // private touchMoveHandler(event:egret.Event) {
+    //     debugger
+    // }
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
      * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.

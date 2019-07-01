@@ -32,16 +32,21 @@ class WeaponFactory extends egret.DisplayObjectContainer {
         this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEndHandler, this);
     }
 
-    private touchMoveHandler() {}
+    private touchMoveHandler(event:egret.Event) {}
 
-    private touchBeginHandler() {
-        this.placeWeapon();
+    private touchBeginHandler(event:egret.Event) {
+        this.placeWeapon(this.dragWeapon);
     }
 
-    private touchEndHandler() {}
+    private touchEndHandler(event:egret.Event) {}
 
     // 放置武器
-    private placeWeapon() {}
+    private placeWeapon(weapon:Gatling) {
+        if (!weapon) {
+            return;
+        }
+       // const point = this.getAvailablePositionNearby();
+    }
 
     // 创建武器
     private createWeapon() {
@@ -50,7 +55,11 @@ class WeaponFactory extends egret.DisplayObjectContainer {
 
     // 获取附近可放置武器的位置
     private getAvailablePositionNearby(x, y) {
-
+        let tx = Math.round( (x-this.player.startPoint[0]) / this.player.tileWidth );
+        let ty = Math.round( (y-this.player.startPoint[1]) / this.player.tileHeight );
+        x = this.player.startPoint[0] + tx * this.player.tileWidth;
+        y = this.player.startPoint[1] + ty * this.player.tileHeight;
+        return {x: x, y: y, tx: tx, ty: ty};
     }
 
     // 判断上是否能够创建武器，通过钱来判断

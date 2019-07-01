@@ -30,18 +30,28 @@ var WeaponFactory = (function (_super) {
         // 结束（离开 -up）
         this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEndHandler, this);
     };
-    WeaponFactory.prototype.touchMoveHandler = function () { };
-    WeaponFactory.prototype.touchBeginHandler = function () {
-        this.placeWeapon();
+    WeaponFactory.prototype.touchMoveHandler = function (event) { };
+    WeaponFactory.prototype.touchBeginHandler = function (event) {
+        this.placeWeapon(this.dragWeapon);
     };
-    WeaponFactory.prototype.touchEndHandler = function () { };
+    WeaponFactory.prototype.touchEndHandler = function (event) { };
     // 放置武器
-    WeaponFactory.prototype.placeWeapon = function () { };
+    WeaponFactory.prototype.placeWeapon = function (weapon) {
+        if (!weapon) {
+            return;
+        }
+        // const point = this.getAvailablePositionNearby();
+    };
     // 创建武器
     WeaponFactory.prototype.createWeapon = function () {
     };
     // 获取附近可放置武器的位置
     WeaponFactory.prototype.getAvailablePositionNearby = function (x, y) {
+        var tx = Math.round((x - this.player.startPoint[0]) / this.player.tileWidth);
+        var ty = Math.round((y - this.player.startPoint[1]) / this.player.tileHeight);
+        x = this.player.startPoint[0] + tx * this.player.tileWidth;
+        y = this.player.startPoint[1] + ty * this.player.tileHeight;
+        return { x: x, y: y, tx: tx, ty: ty };
     };
     // 判断上是否能够创建武器，通过钱来判断
     WeaponFactory.prototype.canCreate = function () {

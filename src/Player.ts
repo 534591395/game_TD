@@ -4,9 +4,9 @@
  */
 class Player extends egret.DisplayObjectContainer {
    // 地图属性
-   private startPoint:[number] = [1, 140];
-   private tileWidth = 60;
-   private tileHeight = 60;
+   public startPoint:[number] = [1, 140];
+   public tileWidth = 60;
+   public tileHeight = 60;
    // 格子个数
    private mapWidth = 18;
    private mapHeight = 7;
