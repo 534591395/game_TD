@@ -12,8 +12,6 @@ class Player extends egret.DisplayObjectContainer {
    private mapHeight = 7;
 
    // 玩家属性
-   // 金币
-   private money:number = 0;
    // 分数
    private score:number = 0;
    // 武器
@@ -24,6 +22,8 @@ class Player extends egret.DisplayObjectContainer {
    // 路径集合（敌人可走）
    private path:any;
    
+   // 金币
+   public money:number = 0;
 
    // 生命值
    public life:number = 0;

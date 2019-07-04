@@ -8,6 +8,8 @@ class WeaponFactory extends egret.DisplayObjectContainer {
     private dragWeapon:Gatling;
     // 武器类工具
     private weaponTool:WeaponTool;
+    // 触摸时的事件
+    private event: egret.Event;
     
     public parent:egret.DisplayObjectContainer;
 
@@ -32,25 +34,54 @@ class WeaponFactory extends egret.DisplayObjectContainer {
         this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEndHandler, this);
     }
 
-    private touchMoveHandler(event:egret.Event) {}
-
-    private touchBeginHandler(event:egret.Event) {
+    private touchMoveHandler(event:egret.Event) {
+        this.event = event;
         this.placeWeapon(this.dragWeapon);
     }
 
-    private touchEndHandler(event:egret.Event) {}
+    private touchBeginHandler(event:egret.Event) {
+        this.event = event;
+        // TODO：需点击了创建的图标，才能创建武器
+        this.createWeapon();
+    }
+
+    private touchEndHandler(event:egret.Event) {
+        if (!this.dragWeapon) {
+            return;
+        }
+        this.event = event;
+        const yes = this.placeWeapon(this.dragWeapon);
+        // 如果该位置可放置武器
+        if (yes) {
+            this.player.addWeapon(this.dragWeapon);
+            this.player.money -= this.dragWeapon.cost;
+            this.updateWeapon();
+
+        } else {
+            this.parent.removeChild(this.dragWeapon);
+        }
+        this.dragWeapon = null;
+    }
 
     // 放置武器
     private placeWeapon(weapon:Gatling) {
+        let bool = false;
         if (!weapon) {
-            return;
+            return bool;
         }
-       // const point = this.getAvailablePositionNearby();
+        
+        //const point = this.getAvailablePositionNearby();
+        return bool;
     }
 
     // 创建武器
     private createWeapon() {
-
+        if (this.canCreate()) {
+            const gatling = new Gatling();
+            this.dragWeapon = gatling;
+            this.placeWeapon(gatling);
+            this.parent.addChild(gatling);
+        }
     }
 
     // 获取附近可放置武器的位置
@@ -64,7 +95,7 @@ class WeaponFactory extends egret.DisplayObjectContainer {
 
     // 判断上是否能够创建武器，通过钱来判断
     private canCreate() {
-
+        return this.player.money >= Gatling.getLevel(0).cost;
     }
 
 
