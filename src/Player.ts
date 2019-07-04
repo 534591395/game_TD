@@ -12,8 +12,6 @@ class Player extends egret.DisplayObjectContainer {
    private mapHeight = 7;
 
    // 玩家属性
-   // 分数
-   private score:number = 0;
    // 武器
    private weapons = [];
 
@@ -27,6 +25,9 @@ class Player extends egret.DisplayObjectContainer {
 
    // 生命值
    public life:number = 0;
+   // 分数
+   public score:number = 0;
+   
    // 当前玩家进行的游戏轮次
    public round: number = 1;
    public parent:egret.DisplayObjectContainer;
@@ -48,42 +49,6 @@ class Player extends egret.DisplayObjectContainer {
 	 this.path = this.buildPath();
    }
    
-   private buildPath(tx?, ty?, start?, end?) {
-       // map 地图格子集合
-       let map = [];
-       let s = start;
-       if(!s || s[0] < 0) {
-           s = [0, 3];
-       }
-       if (!end) {
-           end = [17, 3];
-       }
-       // 遍历地图
-       for(let i = 0; i < this.mapHeight; i++) {
-           map[i] = [];
-           for (let j = 0; j < this.mapWidth; j++) {
-               // 说明：遍历地图，若发现该格子上有武器，那么设置为 1，否则设置为0 。即 1表示该格子（敌人）不能走
-               map[i][j] = this.getWeaponAt(j, i) ? 1: 0;
-           }
-       }
-       // 若外面传入指定区域，该区域值设置为 1
-       if (tx || ty) {
-           map[tx][ty]= 1;
-       }
-       // 寻路算法，返回最优的path集合
-       let pathArr = Astar.findPath(map, s, end) || [];
-       if (pathArr.length) {
-           // 末尾添加结束点坐标
-           pathArr.push([18,3],[19,3]);
-           // 开始坐标
-           if (start && start[0] < 0) {
-               pathArr.unshift(start);
-           }
-           return pathArr;
-       }
-
-       return null;
-   }
 
    private buidAllPaths() {
        // 默认创建一条path（给敌人使用）
@@ -98,17 +63,7 @@ class Player extends egret.DisplayObjectContainer {
            target.path = this.buildPath(null, null, [target.tx, target.ty]);
        }
    }
-   
-   // 根据地图坐标（地图格子）里查找武器，若这个格子里没有返回null
-   private getWeaponAt(tx, ty) {
-       let weapon = null;
-       this.weapons.map(w => {
-           if (w.tx == tx && w.ty == ty) {
-               weapon = w;
-           }
-       });
-       return weapon;
-   }
+
    
    // 通过目标坐标，获取当前所在的瓦片地图格子坐标
    private getTile(target) {
@@ -178,6 +133,54 @@ class Player extends egret.DisplayObjectContainer {
        if (target.direction[1] != 0) {
            target.y += target.speed * target.direction[1];
        }
+   }
+
+   public buildPath(tx?, ty?, start?, end?) {
+       // map 地图格子集合
+       let map = [];
+       let s = start;
+       if(!s || s[0] < 0) {
+           s = [0, 3];
+       }
+       if (!end) {
+           end = [17, 3];
+       }
+       // 遍历地图
+       for(let i = 0; i < this.mapHeight; i++) {
+           map[i] = [];
+           for (let j = 0; j < this.mapWidth; j++) {
+               // 说明：遍历地图，若发现该格子上有武器，那么设置为 1，否则设置为0 。即 1表示该格子（敌人）不能走
+               map[i][j] = this.getWeaponAt(j, i) ? 1: 0;
+           }
+       }
+       // 若外面传入指定区域，该区域值设置为 1
+       if (tx || ty) {
+           map[tx][ty]= 1;
+       }
+       // 寻路算法，返回最优的path集合
+       let pathArr = Astar.findPath(map, s, end) || [];
+       if (pathArr.length) {
+           // 末尾添加结束点坐标
+           pathArr.push([18,3],[19,3]);
+           // 开始坐标
+           if (start && start[0] < 0) {
+               pathArr.unshift(start);
+           }
+           return pathArr;
+       }
+
+       return null;
+   }   
+
+   // 根据地图坐标（地图格子）里查找武器，若这个格子里没有返回null
+   public getWeaponAt(tx, ty) {
+       let weapon = null;
+       this.weapons.map(w => {
+           if (w.tx == tx && w.ty == ty) {
+               weapon = w;
+           }
+       });
+       return weapon;
    }
 
    // 添加武器，每次添加一个武器后，需重新计算path（障碍物变更）

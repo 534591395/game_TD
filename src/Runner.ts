@@ -6,6 +6,7 @@ class Runner extends egret.DisplayObjectContainer {
     private enemyFactory: EnemyFactory;
     private weaponTool: WeaponTool;
     private weaponFactory: WeaponFactory;
+    private scoreBar: ScoreBar;
     
     private mc1;
 
@@ -25,8 +26,17 @@ class Runner extends egret.DisplayObjectContainer {
         this.weaponTool = new WeaponTool(this.player, this);
         // 武器制造类
         this.weaponFactory = new WeaponFactory(this.player, this, this.weaponTool);
+        this.weaponFactory.x = 1100;
+        this.weaponFactory.y = 495;
+        this.weaponFactory.updateWeapon();
         this.addChild(this.weaponFactory);
-
+        
+        // 状态栏（分数）
+        this.scoreBar = new ScoreBar(this.player, this);
+        this.scoreBar.x = 5;
+        this.scoreBar.y = 5;
+        this.scoreBar.score = this.player.score;
+        this.addChild(this.scoreBar);
 
         this.enemyFactory = new EnemyFactory(this.player, this);
         this.addChild(this.enemyFactory);
