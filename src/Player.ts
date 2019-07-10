@@ -155,7 +155,7 @@ class Player extends egret.DisplayObjectContainer {
        }
        // 若外面传入指定区域，该区域值设置为 1
        if (tx || ty) {
-           map[tx][ty]= 1;
+           map[ty][tx]= 1;
        }
        // 寻路算法，返回最优的path集合
        let pathArr = Astar.findPath(map, s, end) || [];

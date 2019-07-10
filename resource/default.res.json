@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,font_png,gatling_01_png,gatling_02_png,grasslands_grid_s_png,other_png,soldier_01_png,solider_walk_right_gif,solider_walk_down_gif,solider_walk_top_gif,solider_walk_left_gif,solider_deathRightForwards_gif,solider_deathRightBackwards_gif,solider_deathDownBackwards_gif,solider_animation_json,solider_animation_png,solider_animation2_json,solider_animation2_png,solider_deathDownBackwards2_gif,solider_deathRightBackwards2_gif,solider_deathRightForwards2_gif,solider_walk_down2_gif,solider_walk_left2_gif,solider_walk_right2_gif,solider_walk_top2_gif",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,font_png,gatling_01_png,gatling_02_png,grasslands_grid_s_png,other_png,soldier_01_png,solider_walk_right_gif,solider_walk_down_gif,solider_walk_top_gif,solider_walk_left_gif,solider_deathRightForwards_gif,solider_deathRightBackwards_gif,solider_deathDownBackwards_gif,solider_animation_json,solider_animation_png,solider_animation2_json,solider_animation2_png,solider_deathDownBackwards2_gif,solider_deathRightBackwards2_gif,solider_deathRightForwards2_gif,solider_walk_down2_gif,solider_walk_left2_gif,solider_walk_right2_gif,solider_walk_top2_gif,gatingdIcon_png,gatingDisabledIcon_png,gatling_d_png",
 			"name": "preload"
 		}
 	],
@@ -260,6 +260,21 @@
 			"name": "solider_walk_top2_gif",
 			"type": "image",
 			"url": "assets/TD/solider_walk_top.gif"
+		},
+		{
+			"name": "gatingdIcon_png",
+			"type": "image",
+			"url": "assets/TD/gatingdIcon.png"
+		},
+		{
+			"name": "gatingDisabledIcon_png",
+			"type": "image",
+			"url": "assets/TD/gatingDisabledIcon.png"
+		},
+		{
+			"name": "gatling_d_png",
+			"type": "image",
+			"url": "assets/TD/gatling_d.png"
 		}
 	]
 }

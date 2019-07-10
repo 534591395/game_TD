@@ -26,8 +26,8 @@ class Runner extends egret.DisplayObjectContainer {
         this.weaponTool = new WeaponTool(this.player, this);
         // 武器制造类
         this.weaponFactory = new WeaponFactory(this.player, this, this.weaponTool);
-        this.weaponFactory.x = 1100;
-        this.weaponFactory.y = 495;
+        this.weaponFactory.x = this.stage.stageWidth - 100;
+        this.weaponFactory.y = this.stage.stageHeight - 100;
         this.weaponFactory.updateWeapon();
         this.addChild(this.weaponFactory);
         

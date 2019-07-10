@@ -17,6 +17,7 @@ class Gatling extends egret.DisplayObjectContainer {
     private currentAngleFrame = 0;
     // 当前角度数
     private currentAngle = 0;
+    private gatling: egret.Bitmap;
 
     // 机枪等级
     public level = 0;
@@ -51,6 +52,8 @@ class Gatling extends egret.DisplayObjectContainer {
 
     public constructor() {
         super();
+
+        this.create();
     }
 
     //
@@ -101,11 +104,18 @@ class Gatling extends egret.DisplayObjectContainer {
 
     private create() {
         Gatling.setLevel(this, 0);
-
-        // 动画
+        this.gatling = this.createBitmapByName('gatling_d_png');
+        this.addChild(this.gatling);
     }
 
     private getRealFrame(angleFrame, angle) {
         return angleFrame;
     }
+
+    private createBitmapByName(name: string): egret.Bitmap {
+        let result = new egret.Bitmap();
+        let texture: egret.Texture = RES.getRes(name);
+        result.texture = texture;
+        return result;
+    }  
 }

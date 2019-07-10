@@ -27,7 +27,16 @@ var Runner = (function (_super) {
         this.weaponTool = new WeaponTool(this.player, this);
         // 武器制造类
         this.weaponFactory = new WeaponFactory(this.player, this, this.weaponTool);
+        this.weaponFactory.x = this.stage.stageWidth - 100;
+        this.weaponFactory.y = this.stage.stageHeight - 100;
+        this.weaponFactory.updateWeapon();
         this.addChild(this.weaponFactory);
+        // 状态栏（分数）
+        this.scoreBar = new ScoreBar(this.player, this);
+        this.scoreBar.x = 5;
+        this.scoreBar.y = 5;
+        this.scoreBar.score = this.player.score;
+        this.addChild(this.scoreBar);
         this.enemyFactory = new EnemyFactory(this.player, this);
         this.addChild(this.enemyFactory);
         //this.enemyFactory.nextRound();

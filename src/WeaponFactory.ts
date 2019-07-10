@@ -11,7 +11,9 @@ class WeaponFactory extends egret.DisplayObjectContainer {
     // 触摸时的事件
     private event: egret.TouchEvent;
     // 武器的图标（右下角的小图标）
-    private gatingIcon: egret.MovieClip;
+    //private gatingIcon: egret.MovieClip;
+    private gatingDisabledIcon: egret.Bitmap;
+    private gatingdIcon: egret.Bitmap;
     
     public parent:egret.DisplayObjectContainer;
     
@@ -29,9 +31,10 @@ class WeaponFactory extends egret.DisplayObjectContainer {
 
     private onAddToStage() {
         // TODO : 武器的图标（右下角的小图标）
-        this.gatingIcon.width = 77;
-        this.gatingIcon.height = 79;
-        this.addChild(this.gatingIcon);
+        this.gatingdIcon = this.createBitmapByName("gatingdIcon_png");
+        this.gatingdIcon.width = 77;
+        this.gatingdIcon.height = 79;
+        this.addChild(this.gatingdIcon);
         //this.touchEnabled = true;
         // 移动
         this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMoveHandler, this);
@@ -41,6 +44,13 @@ class WeaponFactory extends egret.DisplayObjectContainer {
         this.stage.addEventListener(egret.TouchEvent.TOUCH_END, this.touchEndHandler, this);
     }
 
+    private createBitmapByName(name: string): egret.Bitmap {
+        let result = new egret.Bitmap();
+        let texture: egret.Texture = RES.getRes(name);
+        result.texture = texture;
+        return result;
+    }    
+
     private touchMoveHandler(event:egret.TouchEvent) {
         this.event = event;
         this.placeWeapon(this.dragWeapon);
@@ -49,7 +59,7 @@ class WeaponFactory extends egret.DisplayObjectContainer {
     private touchBeginHandler(event:egret.TouchEvent) {
         this.event = event;
         // 需点击了创建的图标，才能创建武器（TODO: 图标是否可点击未判断）
-        if (this.gatingIcon.hitTestPoint(event.stageX, event.stageY)) {
+        if (this.gatingdIcon.hitTestPoint(event.stageX, event.stageY)) {
             this.createWeapon();
         }
     }
