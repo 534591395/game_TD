@@ -72,14 +72,14 @@ var Player = (function (_super) {
     };
     // 设置目标下一步的移动方向 ?
     Player.prototype.getNextDirection = function (target) {
-        var nextArr = [];
-        target.path.map(function (path, i) {
+        for (var i = 0; i < target.path.length - 1; i++) {
+            var path = target.path[i];
             if (path[0] == target.tx && path[1] == target.ty) {
                 var next = target.path[i + 1];
-                nextArr = [next[0] - target.tx, next[1] - target.ty];
+                return [next[0] - target.tx, next[1] - target.ty];
             }
-        });
-        return nextArr.length ? nextArr : null;
+        }
+        return null;
     };
     // 移动敌人
     Player.prototype.moveTarget = function (target) {

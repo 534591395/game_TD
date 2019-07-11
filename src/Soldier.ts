@@ -91,6 +91,9 @@ class Soldier extends egret.DisplayObjectContainer{
 
     // 设置士兵走动方向动画
     public setDirection(direction) {
+        if (!direction) {
+            return;
+        }
         if (this.direction[0] == direction[1] && this.direction[1] == direction[1]) {
             return;
         }

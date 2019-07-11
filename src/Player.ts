@@ -75,14 +75,14 @@ class Player extends egret.DisplayObjectContainer {
    
    // 设置目标下一步的移动方向 ?
    private getNextDirection(target:Soldier) {
-       let nextArr = [];
-       target.path.map((path, i) => {
+       for(let i = 0; i < target.path.length - 1; i++) {
+           let path = target.path[i];
            if (path[0] == target.tx && path[1] == target.ty) {
                let next = target.path[i+1];
-               nextArr = [next[0]-target.tx, next[1]-target.ty];
+               return [next[0]-target.tx, next[1]-target.ty];
            }
-       });
-       return nextArr.length ? nextArr : null;
+       }
+       return null;
    }
 
    // 移动敌人
