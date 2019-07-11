@@ -149,7 +149,8 @@ class WeaponFactory extends egret.DisplayObjectContainer {
 
     // 判断上是否能够创建武器，通过钱来判断
     private canCreate() {
-        return this.player.money >= Gatling.getLevel(0).cost;
+        return true;
+       // return this.player.money >= Gatling.getLevel(0).cost;
     }
 
 

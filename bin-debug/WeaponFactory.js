@@ -131,7 +131,8 @@ var WeaponFactory = (function (_super) {
     };
     // 判断上是否能够创建武器，通过钱来判断
     WeaponFactory.prototype.canCreate = function () {
-        return this.player.money >= Gatling.getLevel(0).cost;
+        return true;
+        // return this.player.money >= Gatling.getLevel(0).cost;
     };
     // 可创建时武器动画效果
     WeaponFactory.prototype.updateWeapon = function () {
