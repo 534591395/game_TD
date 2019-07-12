@@ -25,7 +25,10 @@ class Map extends egret.DisplayObjectContainer {
             console.log(data)
             let tmxTileMap: tiled.TMXTilemap = new tiled.TMXTilemap(1200, 600, data, mapUrl);
             tmxTileMap.render();
+            tmxTileMap.width = this.stage.stageWidth;
+            tmxTileMap.height = this.stage.stageHeight;
             this.addChild(tmxTileMap);
+            console.log(tmxTileMap)
         }, this); 
     }
 }

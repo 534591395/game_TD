@@ -33,7 +33,10 @@ var Map = (function (_super) {
             console.log(data);
             var tmxTileMap = new tiled.TMXTilemap(1200, 600, data, mapUrl);
             tmxTileMap.render();
+            tmxTileMap.width = _this.stage.stageWidth;
+            tmxTileMap.height = _this.stage.stageHeight;
             _this.addChild(tmxTileMap);
+            console.log(tmxTileMap);
         }, this);
     };
     return Map;
