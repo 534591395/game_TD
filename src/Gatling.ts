@@ -105,6 +105,8 @@ class Gatling extends egret.DisplayObjectContainer {
     private create() {
         Gatling.setLevel(this, 0);
         this.gatling = this.createBitmapByName('gatling_d_png');
+        this.gatling.width = 110;
+        this.gatling.height = 130;
         this.addChild(this.gatling);
     }
 

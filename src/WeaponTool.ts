@@ -33,16 +33,17 @@ class WeaponTool extends egret.DisplayObjectContainer {
         const radius = weapon.attackRadius;
         if (this.radius != radius) {
             this.radius = radius;
-            this.radiusCircle.graphics.drawCircle(2, 2, radius);
-            this.radiusCircle.x = -radius;
-            this.radiusCircle.y = -radius - 8;
+            this.radiusCircle.x = 0;
+            this.radiusCircle.y = 0;
         }
         if (this.enabled != enabled) {
+            this.radiusCircle.graphics.clear();
             this.enabled = enabled;
             this.radiusCircle.graphics.lineStyle(4, 0xb8eaff, 0.4);
             this.radiusCircle.graphics.beginFill(enabled ? 0x008b00 : 0xff0000, 0.4);
+            this.radiusCircle.graphics.drawCircle(0, 0, radius);
         }
-        this.radiusCircle.graphics.clear();
+        
         this.radiusCircle.graphics.endFill();
 
         return this.radiusCircle;

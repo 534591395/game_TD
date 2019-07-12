@@ -14,6 +14,8 @@ class WeaponFactory extends egret.DisplayObjectContainer {
     //private gatingIcon: egret.MovieClip;
     private gatingDisabledIcon: egret.Bitmap;
     private gatingdIcon: egret.Bitmap;
+    // 鼠标点击时，鼠标全局坐标与_bird的位置差    http://developer.egret.com/cn/example/egret2d/index.html#060-interact-drag-drop
+    private distance:egret.Point = new egret.Point();
     
     public parent:egret.DisplayObjectContainer;
     
@@ -30,6 +32,7 @@ class WeaponFactory extends egret.DisplayObjectContainer {
     }
 
     private onAddToStage() {
+        this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
         // TODO : 武器的图标（右下角的小图标）
         this.gatingdIcon = this.createBitmapByName("gatingdIcon_png");
         this.gatingdIcon.width = 77;
@@ -61,6 +64,10 @@ class WeaponFactory extends egret.DisplayObjectContainer {
         // 需点击了创建的图标，才能创建武器（TODO: 图标是否可点击未判断）
         if (this.gatingdIcon.hitTestPoint(event.stageX, event.stageY)) {
             this.createWeapon();
+            if (this.dragWeapon) {
+                this.distance.x = event.stageX - this.dragWeapon.x;
+                this.distance.y = event.stageY - this.dragWeapon.y;
+            }
         }
     }
 
@@ -90,7 +97,7 @@ class WeaponFactory extends egret.DisplayObjectContainer {
         }
 
         // 附近可放置武器的位置 
-        const point = this.getAvailablePositionNearby(this.event.stageX, this.event.stageY);
+        const point = this.getAvailablePositionNearby(this.event.stageX -this.distance.x, this.event.stageY -this.distance.y);
         if (point) {
             this.dragWeapon.x = point.x;
             this.dragWeapon.y = point.y;
@@ -109,16 +116,17 @@ class WeaponFactory extends egret.DisplayObjectContainer {
                 !this.player.buildPath(point.tx, point.ty)
             ) {
                 radiusCircle = this.weaponTool.drawRadius(this.dragWeapon, false);
-                radiusCircle.x = -this.dragWeapon.attackRadius - 2;
-                radiusCircle.y = -this.dragWeapon.attackRadius - 8;
+                radiusCircle.x = this.dragWeapon.attackRadius/2 - 15;
+                radiusCircle.y = this.dragWeapon.attackRadius/2 - 15;
                 this.dragWeapon.addChild(radiusCircle);
                 this.dragWeapon.alpha = 0.5;
                 // 不可放置
                 bool = false;
             } else {
                 radiusCircle = this.weaponTool.drawRadius(this.dragWeapon, true);
-                radiusCircle.x = -this.dragWeapon.attackRadius - 2;
-                radiusCircle.y = -this.dragWeapon.attackRadius - 8;			
+                radiusCircle.x = this.dragWeapon.attackRadius/2 - 15;
+                radiusCircle.y = this.dragWeapon.attackRadius/2 - 15;	
+                console.log(this.dragWeapon.width, this.dragWeapon.height);		
                 this.dragWeapon.addChild(radiusCircle);
                 this.dragWeapon.alpha = 1.0;
                 // 可放置
