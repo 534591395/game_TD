@@ -96,10 +96,10 @@ var WeaponFactory = (function (_super) {
             this.dragWeapon.tx = point.tx;
             this.dragWeapon.ty = point.ty;
             var radiusCircle = void 0;
-            // 该区域放置武器（判断），说明：瓦片地图格子 maxTx = 18, maxTy = 7;
+            // 该区域放置武器（判断），说明：瓦片地图格子 maxTx = 20, maxTy = 10;
             if ((point.tx == 0 && point.ty == 3) ||
                 point.tx < 0 ||
-                point.tx > 17 ||
+                point.tx > 19 ||
                 point.ty < 0 ||
                 point.ty >= 7 ||
                 this.player.getWeaponAt(point.tx, point.ty) ||
@@ -116,7 +116,7 @@ var WeaponFactory = (function (_super) {
                 radiusCircle = this.weaponTool.drawRadius(this.dragWeapon, true);
                 radiusCircle.x = this.dragWeapon.attackRadius / 2 - 15;
                 radiusCircle.y = this.dragWeapon.attackRadius / 2 - 15;
-                console.log(this.dragWeapon.width, this.dragWeapon.height);
+                console.log(this.dragWeapon.tx, this.dragWeapon.ty);
                 this.dragWeapon.addChild(radiusCircle);
                 this.dragWeapon.alpha = 1.0;
                 // 可放置
@@ -140,6 +140,8 @@ var WeaponFactory = (function (_super) {
     WeaponFactory.prototype.getAvailablePositionNearby = function (x, y) {
         var tx = Math.round((x - this.player.startPoint[0]) / this.player.tileWidth);
         var ty = Math.round((y - this.player.startPoint[1]) / this.player.tileHeight);
+        //let ty = Math.round( (y) / this.player.tileHeight );
+        console.log(y);
         x = this.player.startPoint[0] + tx * this.player.tileWidth;
         y = this.player.startPoint[1] + ty * this.player.tileHeight;
         return { x: x, y: y, tx: tx, ty: ty };
