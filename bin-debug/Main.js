@@ -165,12 +165,14 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.createGameScene = function () {
-        var bg = this.createBitmapByName("grasslands_grid_s_png");
-        this.addChild(bg);
-        var stageW = this.stage.stageWidth;
-        var stageH = this.stage.stageHeight;
-        bg.width = stageW;
-        bg.height = stageH;
+        // let bg = this.createBitmapByName("grasslands_grid_s_png");
+        // this.addChild(bg);
+        // let stageW = this.stage.stageWidth;
+        // let stageH = this.stage.stageHeight;
+        // bg.width = stageW;
+        // bg.height = stageH;
+        var map = new Map();
+        this.addChild(map);
         var runner = new Runner();
         this.addChild(runner);
         //this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMoveHandler, this);

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="left-up" width="20" height="10" tilewidth="60" tileheight="60" infinite="0" nextlayerid="5" nextobjectid="11">
- <tileset version="1.2" tiledversion="1.2.2" name="grasslands_grid_s" tilewidth="60" tileheight="60" tilecount="200" columns="20">
- <image source="grasslands_grid_s.png" width="1200" height="600"/>
-</tileset>
+ <tileset firstgid="1" name="grasslands_grid_s" tilewidth="60" tileheight="60" tilecount="200" columns="20">
+  <image source="grasslands_grid_s.png" width="1200" height="600"/>
+ </tileset>
  <layer id="1" name="bg" width="20" height="10">
   <data encoding="csv">
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
@@ -17,17 +17,17 @@
 181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200
 </data>
  </layer>
- <objectgroup id="2" name="soldierBirthPool">
+ <objectgroup id="2" name="soldierBirthPool" visible="0">
   <object id="3" name="pointOne" x="-0.0625" y="240" width="60" height="59.875"/>
   <object id="4" name="target" x="1140" y="300" width="59.75" height="59.75"/>
  </objectgroup>
- <objectgroup id="4" name="tool">
+ <objectgroup id="4" name="tool" visible="0">
   <object id="6" name="gatingdIcon" x="1135" y="525" width="57" height="55"/>
   <object id="7" name="countDown" x="458.667" y="9.33333" width="282.667" height="74.6667"/>
   <object id="8" name="life" x="1065.33" y="11.6667" width="127" height="77.3333"/>
   <object id="9" name="score" x="12.6667" y="12.6667" width="106.667" height="58"/>
  </objectgroup>
- <objectgroup id="3" name="path">
+ <objectgroup id="3" name="path" visible="0">
   <object id="5" name="pathCan" x="120.022" y="119.703" width="959.952" height="420.297"/>
  </objectgroup>
 </map>

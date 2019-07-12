@@ -100,15 +100,18 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createGameScene(): void {
-        let bg = this.createBitmapByName("grasslands_grid_s_png");
-        this.addChild(bg);
-        let stageW = this.stage.stageWidth;
-        let stageH = this.stage.stageHeight;
-        bg.width = stageW;
-        bg.height = stageH;
-
+        // let bg = this.createBitmapByName("grasslands_grid_s_png");
+        // this.addChild(bg);
+        // let stageW = this.stage.stageWidth;
+        // let stageH = this.stage.stageHeight;
+        // bg.width = stageW;
+        // bg.height = stageH;
+        let map = new Map();
+        this.addChild(map);
+        
         let runner = new Runner();
         this.addChild(runner);
+
 
         //this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMoveHandler, this);
     }

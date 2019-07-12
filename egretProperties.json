@@ -29,11 +29,11 @@
     },
     {
       "name": "tiled",
-      "path": "./utils/Tiled"
+      "path": "../tiled"
     },
     {
       "name": "pathFinding",
-      "path": "./utils/PathFinding"
+      "path": "../PathFinding"
     }
   ]
 }

@@ -22,9 +22,10 @@ class Map extends egret.DisplayObjectContainer {
 
         mapUrlLoader.addEventListener(egret.Event.COMPLETE, (event:egret.Event) => {
             let data:any = egret.XML.parse(event.target.data);
-            //let tmxTileMap: tiled.TMXTilemap = new tiled.TMXTilemap(1200, 600, data, mapUrl);
-            //tmxTileMap.render();
-
+            console.log(data)
+            let tmxTileMap: tiled.TMXTilemap = new tiled.TMXTilemap(1200, 600, data, mapUrl);
+            tmxTileMap.render();
+            this.addChild(tmxTileMap);
         }, this); 
     }
 }
