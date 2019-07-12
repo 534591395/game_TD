@@ -4,6 +4,19 @@
 
 class Map extends egret.DisplayObjectContainer {
     public static tmxTileMap: tiled.TMXTilemap;
+
+    public static getMapObj(parentName:string, targetName: string) {
+        let toolMap:any = Map.tmxTileMap.getChildByName(parentName);
+        let childrens = toolMap._childrens || [];
+        let targetObj;
+        childrens.map(child => {
+            if (child.$name == targetName) {
+                targetObj = child;
+            }
+        });
+        return targetObj;
+    }
+    
     public constructor() {
         super();
 
