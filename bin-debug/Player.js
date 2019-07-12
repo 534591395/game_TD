@@ -18,11 +18,11 @@ var Player = (function (_super) {
         var _this = _super.call(this) || this;
         // 地图属性
         _this.startPoint = [1, 140];
-        _this.tileWidth = 60;
-        _this.tileHeight = 60;
-        // 格子个数
-        _this.mapWidth = 18;
-        _this.mapHeight = 7;
+        _this.tileWidth = Map.tmxTileMap.tilewidth;
+        _this.tileHeight = Map.tmxTileMap.tileheight;
+        // 格子个数 行 20，列 10
+        _this.mapWidth = Map.tmxTileMap.rows;
+        _this.mapHeight = Map.tmxTileMap.cols;
         // 玩家属性
         // 武器
         _this.weapons = [];
@@ -36,6 +36,10 @@ var Player = (function (_super) {
         _this.score = 0;
         // 当前玩家进行的游戏轮次
         _this.round = 1;
+        var targetMap = Map.getMapObj('soldierBirthPool', 'pointOne');
+        if (targetMap) {
+            _this.startPoint = [parseInt(targetMap.$x, 10), parseInt(targetMap.$y, 10)];
+        }
         _this.reset();
         _this.parent = parent;
         return _this;

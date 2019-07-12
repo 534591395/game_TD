@@ -18,7 +18,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="soldierBirthPool" visible="0">
-  <object id="3" name="pointOne" x="-0.0625" y="240" width="60" height="59.875"/>
+  <object id="3" name="pointOne" x="2.9375" y="256" width="4" height="14.875"/>
   <object id="4" name="target" x="1140" y="300" width="59.75" height="59.75"/>
  </objectgroup>
  <objectgroup id="4" name="tool" visible="0">

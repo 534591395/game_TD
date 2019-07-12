@@ -5,11 +5,11 @@
 class Player extends egret.DisplayObjectContainer {
    // 地图属性
    public startPoint:[number] = [1, 140];
-   public tileWidth = 60;
-   public tileHeight = 60;
-   // 格子个数
-   private mapWidth = 18;
-   private mapHeight = 7;
+   public tileWidth = Map.tmxTileMap.tilewidth;
+   public tileHeight = Map.tmxTileMap.tileheight;
+   // 格子个数 行 20，列 10
+   private mapWidth = Map.tmxTileMap.rows;
+   private mapHeight = Map.tmxTileMap.cols;
 
    // 玩家属性
    // 武器
@@ -34,6 +34,10 @@ class Player extends egret.DisplayObjectContainer {
 
    public constructor(parent) {
         super();
+        const targetMap = Map.getMapObj('soldierBirthPool', 'pointOne');
+        if (targetMap) {
+            this.startPoint = [parseInt(targetMap.$x, 10), parseInt(targetMap.$y, 10)];
+        }
         this.reset();
         this.parent = parent;
    }
