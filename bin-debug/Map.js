@@ -35,9 +35,15 @@ var Map = (function (_super) {
             tmxTileMap.render();
             tmxTileMap.width = _this.stage.stageWidth;
             tmxTileMap.height = _this.stage.stageHeight;
+            Map.tmxTileMap = tmxTileMap;
             _this.addChild(tmxTileMap);
             console.log(tmxTileMap);
+            _this.spirit();
         }, this);
+    };
+    Map.prototype.spirit = function () {
+        var runner = new Runner();
+        this.addChild(runner);
     };
     return Map;
 }(egret.DisplayObjectContainer));

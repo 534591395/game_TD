@@ -35,9 +35,22 @@ class WeaponFactory extends egret.DisplayObjectContainer {
         this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
         // TODO : 武器的图标（右下角的小图标）
         this.gatingdIcon = this.createBitmapByName("gatingdIcon_png");
-        this.gatingdIcon.width = 77;
-        this.gatingdIcon.height = 79;
-        this.addChild(this.gatingdIcon);
+        this.gatingdIcon.width = 60;
+        this.gatingdIcon.height = 60;
+        
+        let toolMap:any = Map.tmxTileMap.getChildByName('tool');
+        let childrens = toolMap._childrens || [];
+        childrens.map(child => {
+            if (child.$name == 'gatingdIcon') {
+                this.gatingdIcon.x = child.$x;
+                this.gatingdIcon.y = child.$y;
+                this.gatingdIcon.width = child.$width;
+                this.gatingdIcon.height = child.$height;
+            }
+        });
+
+        this.parent.addChild(this.gatingdIcon);
+
         //this.touchEnabled = true;
         // 移动
         this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMoveHandler, this);
@@ -141,6 +154,8 @@ class WeaponFactory extends egret.DisplayObjectContainer {
         if (this.canCreate()) {
             const gatling = new Gatling();
             this.dragWeapon = gatling;
+            this.dragWeapon.x = this.x;
+            this.dragWeapon.y = this.y;
             this.placeWeapon(gatling);
             this.parent.addChild(gatling);
         }

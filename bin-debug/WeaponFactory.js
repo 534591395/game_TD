@@ -24,12 +24,23 @@ var WeaponFactory = (function (_super) {
         return _this;
     }
     WeaponFactory.prototype.onAddToStage = function () {
+        var _this = this;
         this.removeEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
         // TODO : 武器的图标（右下角的小图标）
         this.gatingdIcon = this.createBitmapByName("gatingdIcon_png");
-        this.gatingdIcon.width = 77;
-        this.gatingdIcon.height = 79;
-        this.addChild(this.gatingdIcon);
+        this.gatingdIcon.width = 60;
+        this.gatingdIcon.height = 60;
+        var toolMap = Map.tmxTileMap.getChildByName('tool');
+        var childrens = toolMap._childrens || [];
+        childrens.map(function (child) {
+            if (child.$name == 'gatingdIcon') {
+                _this.gatingdIcon.x = child.$x;
+                _this.gatingdIcon.y = child.$y;
+                _this.gatingdIcon.width = child.$width;
+                _this.gatingdIcon.height = child.$height;
+            }
+        });
+        this.parent.addChild(this.gatingdIcon);
         //this.touchEnabled = true;
         // 移动
         this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMoveHandler, this);
@@ -125,6 +136,8 @@ var WeaponFactory = (function (_super) {
         if (this.canCreate()) {
             var gatling = new Gatling();
             this.dragWeapon = gatling;
+            this.dragWeapon.x = this.x;
+            this.dragWeapon.y = this.y;
             this.placeWeapon(gatling);
             this.parent.addChild(gatling);
         }

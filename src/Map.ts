@@ -3,6 +3,7 @@
  */
 
 class Map extends egret.DisplayObjectContainer {
+    public static tmxTileMap: tiled.TMXTilemap;
     public constructor() {
         super();
 
@@ -27,8 +28,15 @@ class Map extends egret.DisplayObjectContainer {
             tmxTileMap.render();
             tmxTileMap.width = this.stage.stageWidth;
             tmxTileMap.height = this.stage.stageHeight;
+            Map.tmxTileMap = tmxTileMap;
             this.addChild(tmxTileMap);
             console.log(tmxTileMap)
+            this.spirit();
         }, this); 
+    }
+
+    private spirit() {
+        let runner = new Runner();
+        this.addChild(runner);
     }
 }

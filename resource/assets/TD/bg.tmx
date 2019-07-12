@@ -22,7 +22,7 @@
   <object id="4" name="target" x="1140" y="300" width="59.75" height="59.75"/>
  </objectgroup>
  <objectgroup id="4" name="tool" visible="0">
-  <object id="6" name="gatingdIcon" x="1135" y="525" width="57" height="55"/>
+  <object id="6" name="gatingdIcon" x="1077" y="505" width="79" height="75"/>
   <object id="7" name="countDown" x="458.667" y="9.33333" width="282.667" height="74.6667"/>
   <object id="8" name="life" x="1065.33" y="11.6667" width="127" height="77.3333"/>
   <object id="9" name="score" x="12.6667" y="12.6667" width="106.667" height="58"/>

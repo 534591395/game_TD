@@ -108,9 +108,6 @@ class Main extends eui.UILayer {
         // bg.height = stageH;
         let map = new Map();
         this.addChild(map);
-        
-        let runner = new Runner();
-        this.addChild(runner);
 
 
         //this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMoveHandler, this);

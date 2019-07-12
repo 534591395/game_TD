@@ -173,8 +173,6 @@ var Main = (function (_super) {
         // bg.height = stageH;
         var map = new Map();
         this.addChild(map);
-        var runner = new Runner();
-        this.addChild(runner);
         //this.stage.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.touchMoveHandler, this);
     };
     // private touchMoveHandler(event:egret.Event) {
